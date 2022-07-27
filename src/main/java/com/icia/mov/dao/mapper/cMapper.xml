@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Comment">
+	<select id="cList" parameterType="String" resultType="comm">
+		SELECT *
+		FROM COMMENTS WHERE CMNUM = #{mCode}
+	</select>
+
+	<insert id="cWriter" parameterType="comm">
+		INSERT INTO COMMENTS VALUES(COMM_SEQ.NEXTVAL,#{cmNum},
+		#{cWriter},#{cContents},SYSDATE)
+	</insert>
+	
+	<delete id="cDelete" parameterType="comm">
+	DELETE FROM COMMENTS WHERE CNUM = #{cNum} AND CMNUM = #{cmNum}
+	</delete>
+	
+	<update id="cMoid" parameterType="comm" >
+	UPDATE COMMENTS SET CCONTENTS =  #{cContents} WHERE CNUM = #{cNum} AND CMNUM = #{cmNum}
+	</update>
+
+</mapper>

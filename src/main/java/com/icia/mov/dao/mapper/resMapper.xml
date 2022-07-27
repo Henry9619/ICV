@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Reserve">
+	<select id="respage" resultType="movie">
+	SELECT * FROM MOVIES
+	</select>
+	
+	
+	<select id="thlist" resultType="theater">
+		SELECT * FROM THEATERS 
+	</select>
+	
+	<select id="scheList" parameterType="sche" resultType="sche">
+		SELECT * FROM SCHEDULES WHERE SCTHCODE = #{scThCode} AND SCMOVCODE = #{scMovCode} 
+		AND SCTIME LIKE '%'||TO_DATE(#{scDate},'YYYY-MM-DD-HH24:MI')||'%' ORDER BY SCHALL
+	</select>
+	
+	
+	
+	<insert id="ressuccess" parameterType="res">
+		INSERT INTO RESERVATION VALUES(#{rvCode},#{rvmId},#{rvScHall},TO_DATE(#{rvScTime},'YYYY-MM-DD-HH24:MI'),#{rvScThCode},#{rvMovCode},#{rvCount})
+	</insert>
+	
+	<select id="resview" parameterType="String" resultType="res2">
+	SELECT R.RVCODE, R.RVSCHALL, R.RVSCTIME, R.RVSCHALL, R.RVCOUNT, T.THNAME , M.MOVNAME
+	FROM THEATERS T, MOVIES M, RESERVATION R
+	WHERE R.RVSCTHCODE = T.THCODE AND R.RVMOVCODE = M.MOVCODE AND R.RVCODE=#{rvCode}
+	
+	</select>
+	
+	
+</mapper>

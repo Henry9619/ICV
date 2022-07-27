@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<typeAliases>
+	<typeAlias type="com.icia.mov.dto.MDTO" alias="member"/>	
+	<typeAlias type="com.icia.mov.dto.MovieDto" alias="movie"/>
+	<typeAlias type="com.icia.mov.dto.PDTO" alias="paging"/>
+	<typeAlias type="com.icia.mov.dto.THDTO" alias="theater"/>
+	<typeAlias type="com.icia.mov.dto.CommentDto" alias="comm"/>
+	<typeAlias type="com.icia.mov.dto.ScheduleDTO" alias="schedule"/>
+	<typeAlias type="com.icia.mov.dto.RESDTO" alias="res"/>
+	<typeAlias type="com.icia.mov.dto.SCHEDTO" alias="sche"/>
+	<typeAlias type="com.icia.mov.dto.SCHEDTO2" alias="sche2"/>
+	<typeAlias type="com.icia.mov.dto.RESDTO2" alias="res2"/>
+</typeAliases>
+
+</configuration>
+

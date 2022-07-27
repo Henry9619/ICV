@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Schedule">
+	<insert id="insert" parameterType="schedule">
+		INSERT INTO SCHEDULES
+		VALUES(#{scHall},TO_DATE(#{scTime},'YYYY-MM-DD
+		HH24:MI'),#{scthCode},#{scmovCode})
+	</insert>
+	<select id="movList" resultType="movie">
+		SELECT * FROM MOVIES
+	</select>
+	<select id="movSearch" parameterType="String" resultType="movie">
+		SELECT
+		* FROM MOVIES WHERE MOVNAME like '%'||#{movName}||'%'
+	</select>
+	
+	<!-- 상영시간 리스트 -->
+	<select id="SchaduleList" resultType="sche2">
+		SELECT T.THNAME, M.MOVNAME, S.SCHALL, S.SCTIME
+		FROM THEATERS T, MOVIES M, SCHEDULEs S
+		WHERE S.SCTHCODE = T.THCODE AND S.SCMOVCODE = M.MOVCODE
+	</select>
+
+	
+
+
+</mapper>
